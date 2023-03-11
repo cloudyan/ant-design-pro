@@ -21,7 +21,6 @@ package-lock.json
 *bak
 .vscode
 
-
 # visual studio code
 .history
 *.log
@@ -39,3 +38,6 @@ screenshot
 .eslintcache
 
 build
+
+temp
+docker

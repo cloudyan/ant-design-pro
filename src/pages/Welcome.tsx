@@ -14,6 +14,7 @@ const InfoCard: React.FC<{
   desc: string;
   href: string;
 }> = ({ title, href, index, desc }) => {
+  // TIP: 这是 token 的使用
   const { useToken } = theme;
 
   const { token } = useToken();

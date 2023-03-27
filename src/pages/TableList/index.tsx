@@ -1,4 +1,3 @@
-import { addRule, removeRule, rule, updateRule } from '@/services/ant-design-pro/api';
 import { PlusOutlined } from '@ant-design/icons';
 import type { ActionType, ProColumns, ProDescriptionsItemProps } from '@ant-design/pro-components';
 import {
@@ -13,8 +12,11 @@ import {
 import { FormattedMessage, useIntl } from '@umijs/max';
 import { Button, Drawer, Input, message } from 'antd';
 import React, { useRef, useState } from 'react';
-import type { FormValueType } from './components/UpdateForm';
+
+import { addRule, removeRule, rule, updateRule } from '@/services/ant-design-pro/api';
 import UpdateForm from './components/UpdateForm';
+
+import type { FormValueType } from './components/UpdateForm';
 
 /**
  * @en-US Add node

@@ -203,29 +203,29 @@ export default [
   //     },
   //   ],
   // },
-  // {
-  //   name: 'result',
-  //   icon: 'CheckCircleOutlined',
-  //   path: '/result',
-  //   routes: [
-  //     {
-  //       path: '/result',
-  //       redirect: '/result/success',
-  //     },
-  //     {
-  //       name: 'success',
-  //       icon: 'smile',
-  //       path: '/result/success',
-  //       component: './result/success',
-  //     },
-  //     {
-  //       name: 'fail',
-  //       icon: 'smile',
-  //       path: '/result/fail',
-  //       component: './result/fail',
-  //     },
-  //   ],
-  // },
+  {
+    name: 'result',
+    icon: 'CheckCircleOutlined',
+    path: '/result',
+    routes: [
+      {
+        path: '/result',
+        redirect: '/result/success',
+      },
+      {
+        name: 'success',
+        icon: 'smile',
+        path: '/result/success',
+        component: './result/success',
+      },
+      {
+        name: 'fail',
+        icon: 'smile',
+        path: '/result/fail',
+        component: './result/fail',
+      },
+    ],
+  },
   {
     name: 'exception',
     icon: 'warning',

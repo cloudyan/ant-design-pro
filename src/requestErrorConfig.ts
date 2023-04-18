@@ -39,6 +39,7 @@ export const errorConfig: RequestConfig = {
       }
     },
     // 错误接收及处理
+    // 注意：当你使用了 errorHandler 时，注册的 response 拦截器会失效，因为在 errorHandler 就会 throw error
     errorHandler: (error: any, opts: any) => {
       if (opts?.skipErrorHandler) throw error;
       // 我们的 errorThrower 抛出的错误。

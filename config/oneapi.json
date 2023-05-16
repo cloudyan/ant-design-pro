@@ -6,10 +6,10 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8000/"
+      "url": "http://localhost:8000"
     },
     {
-      "url": "https://localhost:8000/"
+      "url": "https://localhost:8000"
     }
   ],
   "paths": {
@@ -575,7 +575,12 @@
           },
           "datetime": {
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "example": "2020-08-31",
+            "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])$",
+            "minLength": 10,
+            "maxLength": 10,
+            "x-42c-format": "o:date"
           },
           "description": {
             "type": "string"

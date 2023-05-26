@@ -46,6 +46,7 @@
     "not ie <= 10"
   ],
   "dependencies": {
+    "@ant-design/cssinjs": "^1.9.1",
     "@ant-design/icons": "^4.8.0",
     "@ant-design/pro-components": "^2.3.57",
     "@ant-design/pro-provider": "^2.8.7",

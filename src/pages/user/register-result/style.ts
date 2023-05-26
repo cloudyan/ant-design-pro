@@ -1,5 +1,6 @@
 import type { GenerateStyle, ProAliasToken } from '@ant-design/pro-provider';
 import { useStyle as useAntdStyle } from '@ant-design/pro-provider';
+// import { theme } from 'antd';
 
 interface StyleToken extends ProAliasToken {
   antCls: string;
@@ -7,7 +8,9 @@ interface StyleToken extends ProAliasToken {
   componentCls: string;
 }
 
-const genStyle: GenerateStyle<StyleToken> = (token: any, callback: any) => {
+// console.log('theme', theme)
+
+const genCustomStyle: GenerateStyle<StyleToken> = (token: any, callback: any) => {
   // const { componentCls, antCls, iconCls } = token;
 
   // prefixCls,     // 调用 useStyle 时传入的 prefixCls
@@ -49,7 +52,7 @@ export default function designStyle(ComponentName: string, callback = () => {}) 
         ...token,
         componentCls: `.${prefixCls}`,
       };
-      return [genStyle(styleToken, callback)];
+      return [genCustomStyle(styleToken, callback)];
     });
   };
 }

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { Button, Result, ConfigProvider } from 'antd';
+// import { StyleProvider } from '@ant-design/cssinjs';
 import { Link } from '@umijs/max';
 import React, { useContext } from 'react';
 // import type { RouteChildrenProps } from 'react-router';
@@ -19,9 +20,10 @@ const useStyle = designStyle('RegisterResult', (token: any) => {
       background: 'none',
 
       // 生效了，但没有where，优先级不高被下面的样式覆盖了
-      // TODO: 怎么控制添加 where 呢？
       // :where(.css-dev-only-do-not-override-1vtf12y).ant-result .ant-result-icon>.anticon
-      [`${antCls}icon`]: {
+      // TODO: 怎么控制添加 where 呢？
+      // 参考：https://ant.design/docs/react/compatible-style-cn#where-%E9%80%89%E6%8B%A9%E5%99%A8
+      [`${componentCls}-icon > ${antCls}icon`]: {
         fontSize: '64px',
       },
     },
@@ -85,16 +87,22 @@ export type LocationState = Record<string, unknown>;
 
 const RegisterResult: React.FC = (props) => {
   const { getPrefixCls } = useContext(ConfigProvider.ConfigContext);
-  const componentPrefixCls = getPrefixCls('register-result');
+  const componentPrefixCls = getPrefixCls('result');
+  const prefixCls = `${componentPrefixCls}`;
   const { wrapSSR, hashId } = useStyle(componentPrefixCls);
 
   const { location = {} } = props;
   const email = location.state
     ? (location.state as LocationState).account
     : 'AntDesign@example.com';
+
+  const classes = classNames(prefixCls, hashId);
+  console.log('classes', classes, prefixCls, hashId);
   return wrapSSR(
+    // 会移除 `:where` 选择器封装
+    // <StyleProvider hashPriority="high"></StyleProvider>
     <Result
-      className={classNames(componentPrefixCls, hashId)}
+      className={classes}
       // style={styles.registerResult}
       status="success"
       title={

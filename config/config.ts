@@ -105,8 +105,9 @@ export default defineConfig({
    * @name antd 插件
    * @description 内置了 babel import 插件
    * @doc https://umijs.org/docs/max/antd#antd
+   * 内置 antd@4 基于 babel-plugin-import 做按需编译
    */
-  antd: {},
+  antd: false,
   /**
    * @name 网络请求配置
    * @description 它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
@@ -119,6 +120,28 @@ export default defineConfig({
    * @doc https://umijs.org/docs/max/access
    */
   access: {},
+  /**
+   * @name <externals> 设置哪些模块不打包
+   * @description 通常需要搭配 headScripts/scripts 配置使用
+   * @description 注意: 不要轻易设置 antd 的 externals，由于依赖较多，使用方式复杂，可能会遇到较多问题，并且一两句话很难解释清楚。
+   * @description 如果 external antd，需同时 external 额外的 dayjs, react 和 react-dom，并在 antd 前引入
+   * 打包时移除 antd, plugin-locale, core-js, pro-components, lodash => lodash-es
+   * 怎么控制不要多语言
+   */
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    dayjs: 'dayjs',
+    antd: 'antd',
+    // '@ant-design/pro-components': 'window.ProComponents',
+  },
+  scripts: [
+    'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
+    'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+    'https://unpkg.com/dayjs@1.11.7/dayjs.min.js',
+    'https://unpkg.com/antd@5.5.2/dist/antd.min.js',
+    // 'https://unpkg.com/@ant-design/pro-components@2.5.4/dist/pro-components.min.js',
+  ],
   /**
    * @name <head> 中额外的 script
    * @description 配置 <head> 中额外的 script

@@ -12,6 +12,7 @@ import React from 'react';
 import { AvatarDropdown, AvatarName } from '@/components';
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
+const noAuthPath = ['/user/login', '/user/register', '/user/register-result'];
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
@@ -35,7 +36,7 @@ export async function getInitialState(): Promise<{
   };
   // 如果不是登录页面，执行
   const { location } = history;
-  if (location.pathname !== loginPath) {
+  if (!noAuthPath.includes(location.pathname)) {
     const currentUser = await fetchUserInfo();
     return {
       fetchUserInfo,

@@ -135,6 +135,8 @@ export default defineConfig({
     antd: 'antd',
     // '@ant-design/pro-components': 'window.ProComponents',
   },
+  // 可以根据 process.env.NODE_ENV 加载开发版或生产版本
+  // 适用 externals, 还需要把 babel-import-plugin 关掉，不然他会是 antd/es/xxx, externals 匹配不到。
   scripts: [
     'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
     'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
